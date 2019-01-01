@@ -30,8 +30,14 @@ class BounceRate extends CustomizedTrend
         $keys = array_keys($bounce_count);
 
         foreach ($keys as $key) {
-            $value = $bounce_count[$key] / $visits[$key] * 100;
-            $value = (int) round($value);
+            if($visits[$key] > 0)
+            {
+                $value = $bounce_count[$key] / $visits[$key] * 100;
+                $value = (int) round($value);
+            }
+            else
+                $value = 0;
+
             $results[$key] = $value;
         }
 

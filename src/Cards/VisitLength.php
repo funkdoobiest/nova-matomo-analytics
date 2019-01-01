@@ -30,8 +30,14 @@ class VisitLength extends CustomizedTrend
         $keys = array_keys($visit_length);
 
         foreach ($keys as $key) {
-            $value = $visit_length[$key] / $visits[$key];
-            $value = (int) round($value);
+            if($visits[$key] > 0)
+            {
+                $value = $visit_length[$key] / $visits[$key];
+                $value = (int) round($value);
+            }
+            else
+                $value = 0;
+
             $results[$key] = $value;
         }
 
